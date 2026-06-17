@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,14 +37,20 @@
         .button:hover {
             background-color: #0056b3;
         }
+        #music-toggle-img {
+            cursor: pointer;
+            width: 40px; /* Adjust size as needed */
+            height: 40px; /* Adjust size as needed */
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <audio id="background-music" loop autoplay>
         <source src="hajimi.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        Your browser does not not support the audio element.
     </audio>
-    <button id="music-toggle" class="button">Pause Music</button>
+    <img id="music-toggle-img" src="speaker_on.png" alt="Toggle Music"/>
 
     <h1>你是一個一個doropling!</h1>
     <p> 壓力</p>
@@ -56,16 +61,18 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const music = document.getElementById('background-music');
-            const toggleButton = document.getElementById('music-toggle');
-            let isPlaying = true;
+            const toggleImage = document.getElementById('music-toggle-img');
+            const speakerOnSrc = 'speaker_on.png'; // Make sure this path is correct
+            const speakerOffSrc = 'speaker_off.png'; // Make sure this path is correct
+            let isPlaying = true; // Assume autoplay works initially
 
-            toggleButton.addEventListener('click', function() {
+            toggleImage.addEventListener('click', function() {
                 if (isPlaying) {
                     music.pause();
-                    toggleButton.textContent = 'Play Music';
+                    toggleImage.src = speakerOffSrc;
                 } else {
                     music.play();
-                    toggleButton.textContent = 'Pause Music';
+                    toggleImage.src = speakerOnSrc;
                 }
                 isPlaying = !isPlaying;
             });
@@ -74,7 +81,7 @@
             music.play().catch(error => {
                 console.log("Autoplay was prevented by the browser. User needs to interact to play music.");
                 isPlaying = false;
-                toggleButton.textContent = 'Play Music';
+                toggleImage.src = speakerOffSrc; // Set to speaker off if autoplay failed
             });
         });
     </script>
