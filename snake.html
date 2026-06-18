@@ -373,7 +373,7 @@ function drawSnake() {
       if (IMGS.HEAD) {
         drawRotated(IMGS.HEAD, px, py, vecToAngle(dir));
       } else {
-        drawFallbackRect(px, py, alive ? '#50dc8c' : '#ff5050');
+        drawFallbackRect(px, py, alive ? '#fff3ee' : '#ff5050');
       }
 
     } else if (i === n - 1) {
