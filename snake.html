@@ -373,7 +373,7 @@ function drawSnake() {
       if (IMGS.HEAD) {
         drawRotated(IMGS.HEAD, px, py, vecToAngle(dir));
       } else {
-        drawFallbackRect(px, py, alive ? '#fff3ee' : '#ff5050');
+        drawFallbackRect(px, py, alive ? '#ffdac8' : '#ff5050');
       }
 
     } else if (i === n - 1) {
@@ -384,7 +384,7 @@ function drawSnake() {
       if (IMGS.TAIL) {
         drawRotated(IMGS.TAIL, px, py, vecToAngle(tailDir));
       } else {
-        drawFallbackRect(px, py, alive ? '#1e7840' : '#7a1e1e');
+        drawFallbackRect(px, py, alive ? 'ffdac8' : '#7a1e1e');
       }
 
     } else {
@@ -405,7 +405,7 @@ function drawSnake() {
           const angle = (fromDir[0] !== 0) ? 0 : 90;
           drawRotated(IMGS.BODY, px, py, angle);
         } else {
-          drawFallbackRect(px, py, alive ? '#32b464' : '#cc3333');
+          drawFallbackRect(px, py, alive ? '#fff3ee' : '#cc3333');
         }
       } else {
         // 轉彎段
@@ -413,7 +413,7 @@ function drawSnake() {
           const angle = cornerAngle(fromDir, toDir);
           drawRotated(IMGS.CORNER, px, py, angle);
         } else {
-          drawFallbackRect(px, py, alive ? '#28a050' : '#bb2222');
+          drawFallbackRect(px, py, alive ? '#fff3ee' : '#bb2222');
         }
       }
     }
