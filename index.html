@@ -51,12 +51,59 @@
         .button:hover {
             background-color: #0056b3;
         }
+        .menu-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;  
+            z-index: 1000; 
+            transition: background-color 0.3s;
+        }
+        .menu-button:hover {
+             background-color: #0056b3;
+        }
+        .dropdown-content {
+            position: fixed;
+            top: 70px; 
+            right: 20px;
+            width: 200px;
+            background-color: white;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.15);   
+            border-radius: 5px;
+            overflow: hidden;
+            z-index: 999;
+            max-height: 0;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .dropdown-content a {
+            display: block;
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            font-family: 'Chiron GoRound TC', sans-serif;
+            border-bottom: 1px solid #eee;
+         }
+        .dropdown-content a:hover {
+            background-color: #fffcec; /* 呼應您的網頁背景色 */
+            color: #007bff;
+         }
+
+       /* 4. 當選單被激活時的外觀（由 JS 控制切換） */
+        .dropdown-content.show {
+            max-height: 300px; 
+         }
         #music-toggle-img {
             cursor: pointer;
             width:  40px; 
             height: 40px;
             margin-bottom: 10px;
         }
+        
     </style>
 </head>
 <body>
@@ -64,6 +111,14 @@
         <source src="hajimi.mp3" type="audio/mpeg">
         Your browser does not not support the audio element.
     </audio>
+    
+    <div id="menu-btn" class="menu-button">☰</div>
+    <div id="dropdown-menu" class="dropdown-content">
+        <a href="#section1">🍊 認識 Doro 包</a>
+        <a href="#section2">👨‍🍳 製作祕聞</a>
+        <a href="#section3">💬 聯絡我們</a>
+    </div>
+
     <img id="music-toggle-img" src="bgm_on.png" alt="Toggle Music"/>
 
     <h1>你是一個一個doropling!</h1>
@@ -95,6 +150,26 @@
                 isPlaying = false;
                 toggleImage.src = speakerOffSrc;
             });
+        
+           const menuBtn = document.getElementById('menu-btn');
+           const dropdownMenu = document.getElementById('dropdown-menu');
+           menuBtn.addEventListener('click', function(e) {
+               dropdownMenu.classList.toggle('show');
+    
+    
+               if (dropdownMenu.classList.contains('show')) {
+                   menuBtn.textContent = '✕';
+               } else {
+                   menuBtn.textContent = '☰';
+               }
+                e.stopPropagation();
+           });
+           document.addEventListener('click', function() {
+               if (dropdownMenu.classList.contains('show')) {
+                   dropdownMenu.classList.remove('show');
+                   menuBtn.textContent = '☰';
+               }
+           });
         });
     </script>
 </body>
