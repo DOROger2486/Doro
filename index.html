@@ -121,21 +121,23 @@
         }
         
         .topbar-left, .topbar-right {
-            width: 25%;
+            flex: 1; 
             display: flex;
             align-items: center;
-        }
+        }  
         .topbar-right {
-            justify-content: flex-end; /* 右側元件靠右對齊 */
-            position: relative; /* 讓下拉選單以這裡為基準定位 */
+            justify-content: flex-end;
+            position: relative;
         }
+
         .topbar-center {
-            width: 40%;
             text-align: center;
             font-family: 'Josefin Sans','Chiron GoRound TC', sans-serif;
             font-size: 20px;
             font-weight: 750;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            white-space: nowrap; 
+            padding: 0 10px;
         }
         
         /* 4. 修改原本的音樂圖示大小（配合 Bar 的高度） */
