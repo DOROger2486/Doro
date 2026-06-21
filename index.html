@@ -10,187 +10,140 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Noto+Sans+TC:wght@400;700&family=Permanent+Marker&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Chiron+GoRound+TC:wght@400;700&display=swap" rel="stylesheet"> 
     <style>
-        body {
-            font-family: 'Josefin Sans', sans-serif; 
-            margin: 20px;
-            background-color: #fffcec;
-            color: #333;
-            background-image: url('background.png');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center center;
-            padding-top: 80px;
-        }
-        h1 {
-            font-family: 'Permanent Marker', 'Chiron GoRound TC', sans-serif; 
-            color: #0056b3;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
-        }
-        p {
-            font-family: 'Chiron GoRound TC', sans-serif; 
-            line-height: 1.6;
-            font-size: 18px;
-            font-weight: 700;
-        }
-        img {
-            max-width: 200px;
-            height: auto;
-            display: block;
-            margin-top: 20px;
-        }
-        .button {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        .button:hover {
-            background-color: #0056b3;
-        }
-        .menu-button {
-            position: fixed;
-            top: 15px;
-            right: 20px;
-            background-color: #ffe153;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-size: 20px;
-            cursor: pointer;  
-            z-index: 1000; 
-            transition: background-color 0.3s;
-        }
-        .menu-button:hover {
-             background-color: #ffd306;
-        }
-        .dropdown-content {
-            position: fixed;
-            top: 70px; 
-            right: 20px;
-            width: 200px;
-            background-color: white;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.15);   
-            border-radius: 5px;
-            overflow: hidden;
-            z-index: 999;
-            max-height: 0;
-            transition: max-height 0.4s ease-in-out;
-        }
-        .dropdown-content a {
-            display: block;
-            color: #333;
-            padding: 12px 16px;
-            text-decoration: none;
-            font-family: 'Chiron GoRound TC', sans-serif;
-            border-bottom: 1px solid #eee;
-         }
-        .dropdown-content a:hover {
-            background-color: #fffcec; /* 呼應您的網頁背景色 */
-            color: #007bff;
-         }
+        <style>
+            body {
+                font-family: 'Josefin Sans', sans-serif; 
+                margin: 20px;
+                background-color: #fffcec;
+                color: #333;
+                background-image: url('background.png');
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center center;
+                padding-top: 90px; /* 墊高空間，避免 70px 的 Bar 擋住網頁內容 */
+            }
+            h1 {
+                font-family: 'Permanent Marker', 'Chiron GoRound TC', sans-serif; 
+                color: #0056b3;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
+            }
+            p {
+                font-family: 'Chiron GoRound TC', sans-serif; 
+                line-height: 1.6;
+                font-size: 18px;
+                font-weight: 700;
+            }
+            img {
+                max-width: 200px;
+                height: auto;
+                display: block;
+                margin-top: 20px;
+            }
+            .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: white;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-top: 20px;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+            .button:hover {
+                background-color: #0056b3;
+            }
+        
+            .topbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 70px;
+                background-color: #fff4c1; 
+                color: #333;              
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                z-index: 1000;
+                box-sizing: border-box;
+            }
+            .topbar-left, .topbar-right {
+                flex: 1; 
+                display: flex;
+                align-items: center;
+            }  
+            .topbar-right {
+                justify-content: flex-end;
+                position: relative; 
+            }
+            .topbar-center {
+                text-align: center;
+                font-family: 'Josefin Sans', 'Chiron GoRound TC', sans-serif;
+                font-size: 20px;
+                font-weight: 750;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+                white-space: nowrap; 
+                padding: 0 10px;
+            }
+        
+            /* 5. 頂部 Bar 內的音樂開關 */
+            #music-toggle-img {
+                cursor: pointer;
+                width: 40px; 
+                height: 40px;
+                display: block;
+            }
+            .menu-button {
+                font-size: 20px;
+                background-color: #ffe153; 
+                color: white;             
+                padding: 10px 15px;
+                border-radius: 5px;
+                cursor: pointer;  
+                z-index: 1000; 
+                transition: background-color 0.3s, transform 0.2s;
+            }
+            .menu-button:hover {
+                background-color: #ffd306; /* 懸停時稍微加深黃色 */
+                transform: scale(1.1);     /* 同時微微放大的動態效果 */
+            }
+            .dropdown-content {
+                position: absolute;
+                top: 50px; /* 控制選單從黃色 Bar 下方彈出的位置 */
+                right: 0;
+                width: 180px;
+                background-color: white;
+                box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+                border-radius: 5px;
+                overflow: hidden;
+                z-index: 999;
+                max-height: 0; 
+                transition: max-height 0.3s ease-in-out;
+            }
+            .dropdown-content.show {
+                max-height: 200px;
+            }
+        
+            .dropdown-content a {
+                display: block;
+                color: #333;
+                padding: 12px 16px;
+                text-decoration: none;
+                font-family: 'Chiron GoRound TC', sans-serif;
+                border-bottom: 1px solid #eee;
+                font-size: 14px;
+                text-align: left;
+            }
+            .dropdown-content a:hover {
+                background-color: #fffcec;
+                color: #ffe153; 
+            }
+        </style>
 
-        .dropdown-content.show {
-            max-height: 300px; 
-         }
-        #music-toggle-img {
-            cursor: pointer;
-            width:  40px; 
-            height: 40px;
-            margin-bottom: 10px;
-         }
-        .topbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 70px;
-            background-color: #fff4c1;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-        
-        .topbar-left, .topbar-right {
-            flex: 1; 
-            display: flex;
-            align-items: center;
-        }  
-        .topbar-right {
-            justify-content: flex-end;
-            position: relative;
-        }
-
-        .topbar-center {
-            text-align: center;
-            font-family: 'Josefin Sans','Chiron GoRound TC', sans-serif;
-            font-size: 20px;
-            font-weight: 750;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            white-space: nowrap; 
-            padding: 0 10px;
-        }
-        
-        /*修改原本的音樂圖示大小 */
-        #music-toggle-img {
-            cursor: pointer;
-            width: 40px; 
-            height: 40px;
-            display: block;
-        }
-        
-        .menu-button {
-            font-size: 22px;
-            cursor: pointer;
-            padding: 5px 10px;
-            transition: transform 0.2s;
-        }
-        .menu-button:hover {
-            transform: scale(1.1);
-        }
-        
-        /* 6. 修改下拉選單定位（改為相對於 topbar-right） */
-        .dropdown-content {
-            position: absolute;
-            top: 45px; /*
-            right: 0;
-            width: 180px;
-            background-color: white;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
-            border-radius: 5px;
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height 0.3s ease-in-out;
-        }
-        .dropdown-content a {
-            display: block;
-            color: #333;
-            padding: 12px 16px;
-            text-decoration: none;
-            font-family: 'Chiron GoRound TC', sans-serif;
-            border-bottom: 1px solid #eee;
-            font-size: 14px;
-            text-align: left;
-        }
-        .dropdown-content a:hover {
-            background-color: #fffcec;
-            color: #ffe153;
-        }
-        .dropdown-content.show {
-            max-height: 200px;
-        }
-
-        
-    </style>
 </head>
 <body>
     <div class="topbar">
