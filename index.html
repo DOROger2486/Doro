@@ -20,7 +20,7 @@
                 background-size: cover;
                 background-attachment: fixed;
                 background-position: center center;
-                padding-top: 90px; /* 墊高空間，避免 70px 的 Bar 擋住網頁內容 */
+                padding-top: 90px; 
             }
             h1 {
                 font-family: 'Permanent Marker', 'Chiron GoRound TC', sans-serif; 
@@ -54,7 +54,7 @@
             .button:hover {
                 background-color: #0056b3;
             }
-        
+            /*懸浮選單*/
             .topbar {
                 position: fixed;
                 top: 0;
@@ -90,7 +90,6 @@
                 padding: 0 10px;
             }
         
-            /* 5. 頂部 Bar 內的音樂開關 */
             #music-toggle-img {
                 cursor: pointer;
                 width: 40px; 
@@ -108,12 +107,12 @@
                 transition: background-color 0.3s, transform 0.2s;
             }
             .menu-button:hover {
-                background-color: #ffd306; /* 懸停時稍微加深黃色 */
-                transform: scale(1.1);     /* 同時微微放大的動態效果 */
+                background-color: #ffd306;
+                transform: scale(1.1);     
             }
             .dropdown-content {
                 position: absolute;
-                top: 50px; /* 控制選單從黃色 Bar 下方彈出的位置 */
+                top: 50px; 
                 right: 0;
                 width: 180px;
                 background-color: white;
@@ -172,7 +171,7 @@
     <h1>你是一個一個doropling!</h1>
     <p>🍊上海手工doropling等你來享用🍊</p>
     <img src="IMG_6432.png" alt="My Local Image">
-    <a href="snake.html" class="button" target="_blank">吃掉他！！！！</a>
+    <a href="snake.html" class="button">吃掉他！！！！</a>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
