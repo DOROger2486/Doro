@@ -42,7 +42,7 @@ img {
     background-color: #0056b3;
 }
 
-/* 懸浮選單 */
+/* 頂部固定bar */
 .topbar {
     position: fixed;
     top: 0;
@@ -81,8 +81,11 @@ img {
 #music-toggle-img {
     cursor: pointer;
     width: 40px; 
-    height: 20px;
-    display: block;
+    height: 40px;
+    position: fixed; 
+    top: 20px;      
+    left: 10px;       
+    z-index: 1000; 
 }
 .menu-button {
     font-size: 20px;
